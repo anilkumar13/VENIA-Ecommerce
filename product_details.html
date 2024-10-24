@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta http-equiv="Cache-control" content="public">
+    <title>VENIA | Product List</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <script defer type="module" src="./js/product_details.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <main>
+            <header id="header">
+                <div class="header-wrapper container container-sm container-md container-lg container-xl container-xxl">
+                    <div class="row justify-content-space-between align-item-center">
+                        <div
+                            class="header-company-logo col-auto display-flex gap-xs-2">
+                            <div class="mobile-menu">
+                                <button id="menu-button">
+                                    <img src="./assets/svgs/menu_40dp_FFFFFF_FILL0_wght200_GRAD-25_opsz40.svg"
+                                        aria-label="mobile menu toggle button" alt="Menu" />
+                                </button>
+                            </div>
+                            <div class="logo">VIENA</div>
+                        </div>
+                        <div id="header-nav" class="header-nav col-auto">
+                            <nav class="nav-wrapper" aria-label="Main Navigation" role="navigation">
+                                <ul class="nav-list">
+                                    <li class="nav-list-item active">
+                                        <a href="/" aria-label="Go to Home page">Home</a>
+                                    </li>
+                                    <li class="nav-list-item">
+                                        <a href="#" aria-label="Shop Women's Collection">Women</a>
+                                    </li>
+                                    <li class="nav-list-item">
+                                        <a href="#" aria-label="Shop Men's Collection">Men</a>
+                                    </li>
+                                    <li class="nav-list-item">
+                                        <a href="#" aria-label="Shop Smart Gear">Smart
+                                            Gear</a>
+                                    </li>
+                                    <li class="nav-list-item">
+                                        <a href="#" aria-label="Shop Accessories">Accessories</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                            <!-- <div class="col-auto col-xs-12 col-sm-auto search-wrapper order-xs-2 order-sm-1">
+                            <label for="search-input" class="search-label"><i class="fa-solid fa-magnifying-glass"></i>
+                                <input id="search-input" name="product-search" value="" class="search-input" aria-labelledby="input for products search" type="text" />
+                            </label>
+                            </div> -->
+                        <div class="header-cart col-auto order-xs-1 order-sm-2">
+                            <div class="cart-wrapper">
+                                <a href="">
+                                <div class="product-count">0</div>
+                                <img src="./assets/svgs/shopping_bag_40dp_FFFFFF_FILL0_wght200_GRAD-25_opsz40.svg"
+                                    class="basket-icon" alt="shopping basket" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section id="product_details"
+                class="container container-sm container-md container-lg container-xl container-xxl">
+
+            </section>
+            <footer id="footer">
+                <div class="container container-sm container-md container-lg container-xl container-xxl">
+                    <div class="footer-wrapper row gap-xs-3 gap-md-0 justify-content-space-between">
+                        <div class="col-md-3 col-sm-6 col-xs-12 nav-accounts" aria-label="Accounts navigation"
+                            role="navigation">
+                            <ul class="footer-nav-list"> Accounts
+                                <li class="footer-nav-list-item"><a href="#">Sign in</a></li>
+                                <li class="footer-nav-list-item"><a href="#">Register</a></li>
+                                <li class="footer-nav-list-item"><a href="#">Order Status</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 nav-about" aria-label="About the company navigation"
+                            role="navigation">
+                            <ul class="footer-nav-list"> About us
+                                <li class="footer-nav-list-item"><a href="#">Our Story</a></li>
+                                <li class="footer-nav-list-item"><a href="#">Careers</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 nav-helps" aria-label="Help navigation"
+                            role="navigation">
+                            <ul class="footer-nav-list"> Help
+                                <li class="footer-nav-list-item"><a href="#">Contact Us</a></li>
+                                <li class="footer-nav-list-item"><a href="#">Order Status</a></li>
+                                <li class="footer-nav-list-item"><a href="#">Return</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 nav-contact" aria-label="contacts navigation"
+                            role="navigation">
+                            <ul class="footer-nav-list"> Follow us!
+                                <li class="footer-nav-list-item">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore.
+                                </li>
+                                <li class="footer-nav-list-item">
+                                    <a class="social-media-icon" href="#"><img class="facebook-icon"
+                                            src="./assets/svgs/facebook.svg" alt="facebook" /></a>
+                                    <a class="social-media-icon" href="#"><img class="instagram-icon"
+                                            src="./assets/svgs/instagram.svg" alt="instagram" /></a>
+                                    <a class="social-media-icon" href="#"><img class="twitter-icon"
+                                            src="./assets/svgs/twitter.svg" alt="twitter" /></a>
+                                </li>
+                                <ul>
+                        </div>
+                    </div>
+                    <div class="copyright-footer-wrapper">
+                        <div class="container container-sm container-md container-lg container-xl container-xxl">
+                            <div class="row gap-xs-1 justify-content-md-space-between justify-content-xs-center">
+                                <div class="col-sm-12 col-3 col-md-3 col-xs-12 order-md-1 order-sm-2 order-xs-2">
+                                    <div class="footer-logo display-flex gap-3 justify-content-md-start justify-content-xs-center ">VIENA</div>
+                                </div>
+                                <div class="col-sm-12 col-auto col-md-auto col-xs-12 order-md-2 order-sm-1  order-xs-1">
+                                   <div class="display-flex gap-3 justify-content-md-end justify-content-xs-center">© Company Name Address Ave, City Name, State ZIP</div> 
+                                </div>
+                                <div class="col-3 col-sm-12 col-md-3 col-xs-12 order-md-3 order-sm-first order-xs-first">
+                                    <div class="display-flex gap-3 justify-content-md-end justify-content-xs-center ">
+                                        <a href="#">Terms of Use</a>
+                                        <a href="#">Privacy Policy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

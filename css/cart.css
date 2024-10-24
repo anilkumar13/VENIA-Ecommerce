@@ -1,0 +1,25 @@
+/* Cart CSS */
+
+.cart-wrapper{
+    display: flex;
+    color: var(--white);
+    align-items: center;
+    position: relative;
+}
+.basket-icon{
+    width:24px;
+}
+.product-count{
+    background-color: var(--primary-m1);
+    padding: 5px 0px;
+    position: absolute;
+    top: -5px;
+    font-size: .5rem;
+    border-radius: 50%;
+    right: -8px;
+    min-width: 20px;
+    min-height: 20px;
+    text-align: center;
+    color: var(--white);
+    overflow: hidden;
+}

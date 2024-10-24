@@ -1,0 +1,119 @@
+.filter-wrapper {
+}
+.filter-wrapper h3 {
+  font-size: 1rem;
+  margin: 25px 0px;
+}
+.filter-wrapper h4 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+.filter-wrapper hr {
+  border: 0;
+  border-bottom: 1px solid #333;
+}
+.filter-categories {
+}
+.filter-category {
+}
+.filter-category label {
+  text-transform: capitalize;
+  font-size: 0.9rem;
+}
+.filter-category input[type="checkbox"] {
+  padding: 2px;
+  height: 15px;
+  width: 15px;
+}
+:checked {
+  color: var(--primary-brand);
+}
+.mobile-filter {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .product-gallery-thumb {
+    display: none;
+  }
+  .mobile-filter {
+    display: block;
+  }
+  .mobile-filter{
+    color: #333 !important;
+  }
+  .mobile-filter img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+}
+@media (max-width: 768px) {
+  #filter.on ~ * {
+    opacity: 0.5;
+  }
+  #filters.on {
+    right: 0px;
+    z-index: 99;
+    opacity: 1;
+  }
+  #filters {
+    position: fixed;
+    top: 0px;
+    right: -230px;
+    background: #ffffff;
+    height: 100%;
+    min-width: 200px;
+    padding: 0px;
+    box-shadow: 10px 10px 30px #333;
+    transition: all 0.5s ease-in-out;
+  }
+  .desktop-filter {
+    display: none;
+  }
+  .mobile-filter {
+    display: flex;
+    margin: 25px 0px;
+  }
+  #mobile-filter, #mobile-sort {
+    color: #333;
+  }
+  .mobile-filter img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+  .filter-wrapper h3{
+    margin: 0px;
+    background: #f5f5f5;
+    padding: 15px;
+    border-bottom: 1px solid #f6f6f6;
+  }
+  .filter-wrapper hr {
+    display: none;
+  }
+  .filter-wrapper h4 {
+    padding: 0px 15px;
+}
+  .filter-categories {
+    padding: 0px 15px;
+  }
+  #filterClose{
+    border:1px solid #eee;
+    cursor: pointer;
+    padding: 3px 8px;
+  }
+  #filterClose:hover{
+    border:1px solid #ccc;
+  }
+}
+@media (min-width: 769px) {
+   #filterClose{
+    display: none;
+   } 
+  #filters {
+    position: relative;
+    padding: unset;
+    box-shadow: none;
+  }
+}

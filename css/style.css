@@ -1,0 +1,98 @@
+@import url("./flex.css");
+@import url("./header.css");
+@import url("./navigation.css");
+@import url("./cart.css");
+@import url("./footer.css");
+@import url("./product.css");
+@import url("./product_details.css");
+@import url("./filters.css");
+:root {
+  --font-size: 16px;
+  --container-padding: 16px;
+  --container-width: 100%;
+  --max-width: 100%;
+
+  /* Colors: */
+  --primary-d1: #47b5ff;
+  --primary-m1: #06283d;
+  --primary-brand: #1363df;
+  --primary-l1: #dff6ff;
+  --gray-d2: #181c24;
+  --gray-d1: #535965;
+  --gray-m1: #91959c;
+  --gray-l2: #b5b7bc;
+  --gray-l1: #e5e5e7;
+  --white: #ffffff;
+  --positive-2: #12805c;
+  --positive-1: #268e6c;
+  --negative-2: #c9252d;
+  --negative-1: #d7373f;
+  --unnamed-color-172026: #172026;
+
+  /* Font/text values */
+  --unnamed-font-family-muli: Muli;
+  --unnamed-font-family-source-serif-pro: Source Serif Pro;
+  --unnamed-font-style-normal: normal;
+  --unnamed-font-style-italic: italic;
+  --unnamed-font-weight-600: 600px;
+  --unnamed-font-weight-normal: normal;
+  --unnamed-font-weight-bold: bold;
+  --unnamed-font-size-14: 14px;
+  --unnamed-font-size-16: 16px;
+  --unnamed-font-size-20: 20px;
+  --unnamed-font-size-24: 24px;
+  --unnamed-font-size-36: 36px;
+  --unnamed-font-size-48: 48px;
+  --unnamed-character-spacing-0: 0px;
+  --unnamed-line-spacing-20: 20px;
+  --unnamed-line-spacing-21: 21px;
+  --unnamed-line-spacing-24: 24px;
+  --unnamed-line-spacing-25: 25px;
+  --unnamed-line-spacing-30: 30px;
+  --unnamed-line-spacing-32: 32px;
+  --unnamed-line-spacing-45: 45px;
+  --unnamed-line-spacing-60: 60px;
+  --unnamed-line-spacing-17-5: 17.5px;
+}
+*,
+:after,
+:before,
+body {
+  box-sizing: border-box;
+}
+ul,
+li {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 0.9rem;
+}
+
+footer,
+header {
+  display: flex;
+  justify-content: center;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+header {
+  background-color: var(--primary-brand);
+}
+footer {
+  border-top: 1px solid #ccc;
+  background-color: var(--white);
+  border-bottom: 1px solid #ccc;
+}

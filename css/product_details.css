@@ -1,0 +1,140 @@
+.thumbnail-gallery {
+  width: 60px;
+  object-fit: contain;
+  aspect-ratio: auto;
+}
+.thumbnail-gallery {
+  overflow: hidden;
+  max-height: 300px;
+  display: flex;
+  gap: 5px;
+}
+.thumbnail-item {
+  width: 60px;
+  height: 60px;
+  padding: 3px;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+.thumbnail-item:hover img,
+.thumbnail-item:focus-within img {
+  opacity: 0.8;
+  transition: all 0.1s ease;
+  border: none;
+}
+.thumbnail-item img {
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-image-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-image {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+.product-image img {
+  min-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  aspect-ratio: 2 / 1;
+}
+
+/* Rating Star */
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #444;
+}
+
+.social-media-icons button {
+  margin: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.btn-count {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.quantity-selector {
+  margin-bottom: 15px;
+}
+.quantity-selector .countInput {
+  max-width: 80px;
+  border-radius: 10px;
+  border: 1px solid var(--gray-l2);
+  padding: 5px;
+  text-align: center;
+  margin-inline: 5px;
+}
+.quantity-selector p{
+  font-size: 0.9rem;
+}
+.add-to-cart {
+  border-radius: 10px;
+  border: 0px;
+}
+.product-des {
+  margin-top: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  text-align: justify;
+  font-size: .9rem;
+}
+.price{
+  margin: 10px 0px;
+}
+.product-heading{
+  margin: 25px 0px 5px 0px;
+  font-size: 2rem;
+  font-weight: 900;
+}
+.price{
+  font-size: .9rem;
+  font-weight: bold;
+}
+.product-description {
+  margin: 20px 0px 20px 0px;
+}
+.product-description h2{
+  font-size: 1.5rem;
+}
+.scroll-btn{
+  border: 0px;
+  padding: 10px 5px;
+  width: 100%;
+  background:none;
+  cursor: pointer;
+}
