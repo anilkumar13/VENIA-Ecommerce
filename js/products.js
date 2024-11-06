@@ -5,12 +5,10 @@ class ProductList {
   #filters;
   #pageNumber = 1;
   #allProducts = [];
-  #filteredData = [];
   #currentDisplayData = [];
   #allAppliedFilters = [];
   #sortSelectBox;
   #totalProducts;
-
   constructor(
     productListId,
     loadMoreButtonId,
@@ -28,7 +26,6 @@ class ProductList {
     this.fetchProducts();
     this.initEventListeners();
   }
-
   initEventListeners() {
     this.#loadMoreButton.addEventListener("click", () =>
       this.handleLoadMoreClick()
@@ -40,9 +37,7 @@ class ProductList {
     this.#sortSelectBox.addEventListener("change", () =>
       this.applyFiltersAndSorting()
     );
-    
   }
-
   async fetchProducts() {
     try {
       const response = await fetch(
@@ -58,31 +53,32 @@ class ProductList {
       console.error("Error fetching products:", error);
     }
   }
-
   renderProducts(products) {
     [...this.#totalProducts].map(
       (e) => (e.innerHTML = `${products.length} Results`)
     );
-    this.#productListContainer.innerHTML = products
-      .map(
-        (product) => `
+    this.#productListContainer.innerHTML =
+      products.length < 1 ? (
+        `<p class='container display-flex justify-content-center'>No product found</p>`
+      ) : (
+        products
+          .map(
+            (product) => `
       <div class="col-xxs-12 col-xs-6 col-md-4 col-lg-3 col-xl-3 product-card">
         <a href="product_details.html?id=${product.id}">
-          <img src="${product.image}" alt="${product.title}">
+          <img src="${product.image}" alt="${product.title}" loading="lazy"/>
           <h2>${product.title}</h2>
           <p>$${product.price}</p>
         </a>
-      </div>
-    `
-      )
-      .join("");
+      </div>`
+          )
+          .join("")
+      );
   }
-
   handleLoadMoreClick() {
     this.#pageNumber++;
     this.fetchProducts();
   }
-
   renderFilters() {
     const categories = [
       ...new Set(this.#allProducts.map((product) => product.category)),
@@ -104,63 +100,57 @@ class ProductList {
               }" name="category_${
                 index + 1
               }" value="${category}"> ${category} </label>
-            </li>
-          `
+            </li>`
             )
             .join("")}
         </ul>
-      </div>
-    `;
+      </div>`;
     this.handleFilterEvent();
   }
-
   handleFilterEvent() {
     const checkboxes = this.#filters.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach((checkbox) => {
       checkbox.addEventListener("change", (event) => {
         const { value, checked } = event.target;
-        if (checked) {
-          this.#allAppliedFilters.push(value);
-        } else {
-          this.#allAppliedFilters = this.#allAppliedFilters.filter(
-            (filter) => filter !== value
-          );
-        }
+        checked
+          ? this.#allAppliedFilters.push(value)
+          : (this.#allAppliedFilters = this.#allAppliedFilters.filter(
+              (filter) => filter !== value
+            ));
         this.applyFiltersAndSorting();
       });
     });
   }
-
   applyFiltersAndSorting() {
-    // Apply filtering based on selected categories and search input
-    this.#filteredData = this.#allProducts.filter((product) => {
-      const matchesCategory =
-        this.#allAppliedFilters.length === 0 ||
-        this.#allAppliedFilters.includes(product.category);
-      const matchesSearch = product.title
-        .toLowerCase()
-        .includes(this.#searchInput.value.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-
-    // Apply sorting on filtered data
     const sortType = this.#sortSelectBox.value;
-    let sortedData = [...this.#filteredData];
-    switch (sortType) {
-      case "ascendingOrder":
-        sortedData.sort((a, b) => a.price - b.price);
-        break;
-      case "descendingOrder":
-        sortedData.sort((a, b) => b.price - a.price);
-        break;
-      case "popularity":
-        sortedData.sort((a, b) => b.rating.rate - a.rating.rate);
-        break;
-      case "title":
-        sortedData.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-    }
-    this.#currentDisplayData = sortedData;
+    this.#currentDisplayData = this.#allProducts
+      .filter((product) => {
+        const matchesCategory =
+          this.#allAppliedFilters.length === 0 ||
+          this.#allAppliedFilters.includes(product.category);
+        const matchesSearch = product.title
+          .toLowerCase()
+          .includes(this.#searchInput.value.toLowerCase());
+        return matchesCategory && matchesSearch;
+      })
+      .sort((a, b) => {
+        switch (sortType) {
+          case "ascendingOrder":
+            return a.price - b.price;
+          case "descendingOrder":
+            return b.price - a.price;
+          case "popularity":
+            return b.rating.rate - a.rating.rate;
+          case "title":
+            return a.title.localeCompare(b.title);
+          default:
+            return 0;
+        }
+      });
+    this.#allAppliedFilters.length > 0 ||
+    this.#searchInput.value.trim().length > 0
+      ? (this.#loadMoreButton.style.display = "none")
+      : (this.#loadMoreButton.style.display = "block");
     this.renderProducts(this.#currentDisplayData);
   }
   toggleFilter() {
@@ -171,19 +161,16 @@ class ProductList {
   handleOpenFilterEvent() {
     const filterBtn = document.querySelector(".mobile-filter a");
     const filterClose = document.querySelector("#filterClose");
-
     filterBtn.addEventListener("click", () => this.toggleFilter());
     window.addEventListener("resize", () =>
       this.#filters.classList.contains("on")
         ? this.#filters.classList.remove("on")
         : null
     );
-
     filterBtn.addEventListener("click", function (event) {
       event.stopPropagation();
       this.#filters.classList.toggle("on");
     });
-
     document.addEventListener("click", (event) => {
       if (
         !this.#filters.contains(event.target) &&
@@ -192,9 +179,7 @@ class ProductList {
         this.#filters.classList.remove("on");
       }
     });
-    filterClose?.addEventListener("click", ()=>this.toggleFilter())
-
-
+    filterClose?.addEventListener("click", () => this.toggleFilter());
   }
   debounce(fn, delay = 300) {
     let timeout;
@@ -204,7 +189,6 @@ class ProductList {
     };
   }
 }
-
 // Instantiate the ProductList class
 const productList = new ProductList(
   "product-list",

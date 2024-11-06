@@ -1,24 +1,16 @@
-// Get the product list container
 const productListContainer = document.getElementById("product_details");
-
-// Use PascalCase for class name
 class ProductDetails {
   #productData = {};
   #starTotal = 5;
   #isHeartActive = false;
-
   constructor() {
     this.fetchProduct();
   }
-
   async fetchProduct() {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get("id");
-
     try {
-      const response = await fetch(
-        `https://fakestoreapi.com/products/${productId}`
-      );
+      const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
       const product = await response.json();
       this.updateUi(product);
       this.setPageTitle(product.title);
@@ -27,7 +19,6 @@ class ProductDetails {
       console.error("Error fetching product:", error);
     }
   }
-
   updateUi(product) {
     const productCard = document.createElement("div");
     productCard.classList.add("row");
@@ -65,9 +56,7 @@ class ProductDetails {
           <div class="col">
               <div id="product-des" class="product-des">${this.renderMoreText()}</div>
           </div>
-          
         </div>
-        
         ${this.generateQuantitySelector()}
           <div class="container"><div class="row"><button type="button" class="btn btn-primary add-to-cart col-5">Add to Cart</button></div></div>
           <div class="row social-media-icons">
@@ -87,14 +76,11 @@ class ProductDetails {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum.</p>
         </div>
       </div>
-        </section>
-    `;
-
+        </section>`;
     productListContainer.appendChild(productCard);
     this.initEventListeners();
     this.setProductRating(product.rating.rate);
   }
-
   generateThumbnails(product) {
     return Array(5)
       .fill()
@@ -104,23 +90,15 @@ class ProductDetails {
             <a href="javascript:void(0)" data-thumid="${i + 1}">
               <img src="${product.image}" alt="${product.title}">
             </a>
-          </li>
-        `
-      )
+          </li>`)
       .join("");
   }
-
   generateImages(product) {
     return Array(5)
       .fill()
-      .map(
-        (_, i) => `
-          <img src="${product.image}" alt="${product.title}" data-id="${i + 1}">
-        `
-      )
+      .map((_, i) => `<img src="${product.image}" alt="${product.title}" data-id="${i + 1}">`)
       .join("");
   }
-
   generateQuantitySelector() {
     return `
       <div class="quantity-selector">
@@ -131,7 +109,6 @@ class ProductDetails {
       </div>
     `;
   }
-
   initEventListeners() {
     this.handleThumbnailImgClick();
     this.initImageSlider();
@@ -141,49 +118,33 @@ class ProductDetails {
     this.handleReadMoreClick();
     this.focusOnHtmlElement(".thumbnail-item:first-child");
   }
-
   handleProductCount() {
     const incrementEl = document.querySelector("#increment");
     const decrementEl = document.querySelector("#decrement");
     const countEl = document.querySelector("#count");
-
     const updateCount = (increment = true) => {
       let currentCount = parseInt(countEl.value);
       currentCount = increment ? currentCount + 1 : currentCount - 1;
       countEl.value = currentCount;
-
       decrementEl.disabled = currentCount === 1;
     };
-
     incrementEl.addEventListener("click", () => updateCount(true));
     decrementEl.addEventListener("click", () => updateCount(false));
   }
-
   handleThumbnailImgClick() {
-    document
-      .getElementById("scroll-top")
-      .addEventListener("click", () => this.productScroll("top"));
-    document
-      .getElementById("scroll-bottom")
-      .addEventListener("click", () => this.productScroll("bottom"));
+    document.getElementById("scroll-top").addEventListener("click", () => this.productScroll("top"));
+    document.getElementById("scroll-bottom").addEventListener("click", () => this.productScroll("bottom"));
   }
-
   handleScrollButtons() {
     const scrollTop = document.getElementById("scroll-top");
     const scrollBottom = document.getElementById("scroll-bottom");
-
     scrollTop.addEventListener("click", () => this.productScroll("top"));
     scrollBottom.addEventListener("click", () => this.productScroll("bottom"));
   }
-
   productScroll(type) {
     const gallery = document.getElementById("thumbnail-gallery");
-    gallery.scroll({
-      top: type === "top" ? 0 : gallery.scrollHeight,
-      behavior: "smooth",
-    });
+    gallery.scroll({top: type === "top" ? 0 : gallery.scrollHeight,behavior: "smooth"});
   }
-
   initImageSlider() {
     const thumbnails = document.querySelectorAll(".thumbnail-gallery a");
     thumbnails.forEach((thumb) => {
@@ -194,23 +155,14 @@ class ProductDetails {
       });
     });
   }
-
   slideImage(id) {
-    const displayWidth = document.querySelector(
-      ".product-image-wrapper"
-    ).clientWidth;
-    document.querySelector("#image-slider").style.transform = `translateX(${
-      -(id - 1) * displayWidth
-    }px)`;
+    const displayWidth = document.querySelector(".product-image-wrapper").clientWidth;
+    document.querySelector("#image-slider").style.transform = `translateX(${-(id - 1) * displayWidth}px)`;
   }
-
   setProductRating(rate) {
     const starPercentage = (rate / this.#starTotal) * 100;
-    document.querySelector(".stars-inner").style.width = `${
-      Math.round(starPercentage / 10) * 10
-    }%`;
+    document.querySelector(".stars-inner").style.width = `${ Math.round(starPercentage / 10) * 10}%`;
   }
-
   toggleHeart() {
     const heartBtn = document.querySelector(".heart-outer");
     heartBtn.addEventListener("click", () => {
@@ -220,7 +172,6 @@ class ProductDetails {
         : `<i class="fa-regular fa-heart"></i> Save`;
     });
   }
-
   setPageTitle(title) {
     document.title = `${document.title.split("|")[0]} | ${title}`;
   }
@@ -250,5 +201,4 @@ class ProductDetails {
     document.querySelector(element).focus();
   }
 }
-
 new ProductDetails();
